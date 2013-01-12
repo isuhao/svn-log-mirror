@@ -27,7 +27,8 @@ except:
     try:
         print ' === incremental update failed; rebuilding dumpfile... ==='
         subprocess.check_call(
-            ['svnadmin', 'dump', '-q', local_repo_dir], stdout=open(dump_file, 'b'))
+            ['svnadmin', 'dump', '--quiet', local_repo_dir], 
+            stdout=open(dump_file, 'wb'))
     except:
         if os.path.exists(dump_file):
             print ' === removing failed dump results ==='
