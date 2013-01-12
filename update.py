@@ -4,17 +4,17 @@
 # Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-from util import *
+from util import svn_head_revision as head_rev
 from paths import *
 import subprocess, os
 
-old_head = head_revision(local_repo_url)
+old_head = head_rev(local_repo_url)
 try:
     print ' === syncing local SVN repo ==='
     subprocess.check_call(
         ['svnsync', 'synchronize', '--non-interactive', local_repo_url])
 
-    if head_revision(local_repo_url) == old_head:
+    if head_rev(local_repo_url) == old_head:
         print ' === Sync triggered, but found nothing to do === '
     else:
         print ' === updating dumpfile ==='
