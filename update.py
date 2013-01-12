@@ -14,13 +14,16 @@ try:
     subprocess.check_call(
         ['svnsync', 'synchronize', '--non-interactive', local_repo_url])
 
+    # If this fails, we'll rebuild the dump from scratch
+    dump = open(dump_file, 'ab')
+
     if head_rev(local_repo_url) == old_head:
         print ' === Sync triggered, but found nothing to do === '
     else:
         print ' === updating dumpfile ==='
         subprocess.check_call(
             ['svnadmin', 'dump', local_repo_dir, '-r', str(old_head), '--incremental'],
-            stdout=open(dump_file, 'ab'))
+            stdout=dump)
 except:
     # If anything went wrong, try to rebuild the dump file from the
     # beginning

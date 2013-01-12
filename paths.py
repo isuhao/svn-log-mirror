@@ -6,7 +6,7 @@ import util, os
 
 _home = '/home/svnsync' # not exported
 
-dump_file = os.path.join(_home, 'boost.svndump')
+dump_file = os.path.join(_home, 'dump', 'boost.svndump')
 local_repo_dir = os.path.join(_home, 'svn', 'boost')
 
 # Don't change this line
