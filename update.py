@@ -15,7 +15,7 @@ def run(dump = False):
         subprocess.check_call(
             ['svnsync', 'synchronize', '--non-interactive', local_repo_url])
 
-        if !dump: return
+        if not dump: return
 
         # If this fails, we'll rebuild the dump from scratch
         open(dump_file, 'r')
